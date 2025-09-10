@@ -16,5 +16,11 @@ Book.prototype.info= function(){
 const a = new Book("The Hobbit","Tolkein",256, false);
 console.log(a.info());
 
+function addBook(title,author,pages,hasRead){
+        const newBook = new Book(title, author, pages, hasRead);
+        myLibrary.push(newBook);
+      
+}
+
 
  
