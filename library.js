@@ -1,3 +1,4 @@
+const library = document.getElementById("library");
 
 const myLibrary = [];
 
@@ -20,7 +21,14 @@ function addBook(title,author,pages,hasRead){
         const newBook = new Book(title, author, pages, hasRead);
         myLibrary.push(newBook);
       
-}
+};
+
+addBook("The Hobbit", "J.R.R. Tolkien", 295, false);
+addBook("Harry Potter", "J.K. Rowling", 400, true);
+addBook("Rich Dad Poor Dad", "Robert Kiyosaki", 250, true);
+
+console.log(myLibrary);
+
 
 
  
