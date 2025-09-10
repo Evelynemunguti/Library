@@ -1,4 +1,8 @@
+
+const myLibrary = [];
+
 function Book(title,author,pages,hasRead){
+    this.id= crypto.randomUUID; // this helpe each book to have a unique identifier
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -11,3 +15,6 @@ Book.prototype.info= function(){
 
 const a = new Book("The Hobbit","Tolkein",256, false);
 console.log(a.info());
+
+
+ 
