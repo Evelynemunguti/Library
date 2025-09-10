@@ -30,25 +30,38 @@ addBook("Rich Dad Poor Dad", "Robert Kiyosaki", 250, true);
 console.log(myLibrary);
 
 
+
+
 function displayBooks() {
-    library.innerHTML = ""; 
+    library.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    `;
+  
+    const tbody = library.querySelector("tbody");
   
     myLibrary.forEach((book) => {
-      // Create a card
-      const bookCard = document.createElement("div");
-      bookCard.classList.add("book-card");
-  
-      // Fill with book info
-      bookCard.innerHTML = `
-        <h3>${book.title}</h3>
-        <p><strong>Author:</strong> ${book.author}</p>
-        <p><strong>Pages:</strong> ${book.pages}</p>
-        <p><strong>Status:</strong> ${book.hasRead ? "Read ✅" : "Not read ❌"}</p>
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.pages}</td>
+        <td>${book.hasRead ? "Read" : "Not read"}</td>
       `;
-  
-      library.appendChild(bookCard);
+      tbody.appendChild(row);
     });
   }
+  
   
   displayBooks();
 
