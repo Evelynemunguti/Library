@@ -1,7 +1,11 @@
 
-  
+
+h1{
+  align-content: center;
+  justify-content: center;
+}
   table {
-    width: 100%;
+    width: 50%;
     border-collapse: collapse;
     margin-top: 20px;
   }
@@ -13,7 +17,7 @@
   }
   
   th {
-    background: #1e88e5;
+    background: #ca1a1a;
     color: white;
   }
   
@@ -21,3 +25,12 @@
     background: #f9f9f9;
   }
   
+  button {
+    background-color: #ca1a1a; 
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
