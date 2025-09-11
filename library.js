@@ -22,9 +22,13 @@ Book.prototype.info= function(){
 const a = new Book("The Hobbit","Tolkein",256, false);
 console.log(a.info());
 
+
+
+
 function addBook(title,author,pages,hasRead){
         const newBook = new Book(title, author, pages, hasRead);
         myLibrary.push(newBook);
+        
       
 };
 
@@ -46,6 +50,7 @@ function displayBooks() {
             <th>Author</th>
             <th>Pages</th>
             <th>Status</th>
+            <th> Action</th>
           </tr>
         </thead>
         <tbody>
@@ -62,6 +67,9 @@ function displayBooks() {
         <td>${book.author}</td>
         <td>${book.pages}</td>
         <td>${book.hasRead ? "Read" : "Not read"}</td>
+        <td>
+        <button class="remove-btn" data-id="${book.id}">Remove</button>
+      </td>
       `;
       tbody.appendChild(row);
     });
@@ -82,6 +90,7 @@ document.getElementById('title').focus();
   }
 );
 
+
 bookForm.addEventListener("submit", (e) => {
   e.preventDefault(); // prevent default form behavior
 
@@ -96,4 +105,41 @@ bookForm.addEventListener("submit", (e) => {
   displayBooks(); //  i called the function coz this updates the table
   bookDialog.close();
 });
+
+library.querySelectorAll(".remove-btn").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const bookId = e.target.getAttribute("data-id");
+    removeBook(bookId);
+  });
+});
+
+function removeBook(id) {
+  const index = myLibrary.findIndex((book) => book.id === id);
+  if (index !== -1) {
+    myLibrary.splice(index, 1);  
+    displayBooks();              
+  }
+}
+
+Book.prototype.toggleRead = function () {
+  this.hasRead = !this.hasRead;
+};
+
+library.querySelectorAll(".toggle-btn").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const bookId = e.target.getAttribute("data-id");
+    toggleReadStatus(bookId);
+  });
+});
+
+function toggleReadStatus(id) {
+  const book = myLibrary.find((book) => book.id === id);
+  if (book) {
+    book.toggleRead();  
+    displayBooks();     
+  }
+}
+
+
+
 
