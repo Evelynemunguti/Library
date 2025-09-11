@@ -1,4 +1,9 @@
 const library = document.getElementById("library");
+const newBookBtn = document.getElementById('newBookBtn');
+const bookDialog = document.getElementById('bookDialog');
+const bookForm = document.getElementById('bookForm');
+// const cancelBtn = document.getElementById('cancelBtn');
+
 
 const myLibrary = [];
 
@@ -65,6 +70,26 @@ function displayBooks() {
   
   displayBooks();
 
-
+  newBookBtn.addEventListener('click',() =>{
+    bookForm.reset(); //this helps clear old values
+    if(typeof bookDialog.showModal === 'function'){
+      bookDialog.showModal();
+    }
+    else{
+      bookDialog.style.display = 'block';
+    }
+document.getElementById('title').focus();
+  }
+);
 
  
+
+// newBookBtn.addEventListener('click', () => {
+//   bookForm.reset();                 // clear old values
+//   if (typeof bookDialog.showModal === 'function') {
+//     bookDialog.showModal();         // show modal (preferred)
+//   } else {
+//     bookDialog.style.display = 'block'; // fallback for old browsers
+//   }
+//   document.getElementById('title').focus();
+// });
