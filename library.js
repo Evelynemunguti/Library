@@ -82,14 +82,18 @@ document.getElementById('title').focus();
   }
 );
 
- 
+bookForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // prevent default form behavior
 
-// newBookBtn.addEventListener('click', () => {
-//   bookForm.reset();                 // clear old values
-//   if (typeof bookDialog.showModal === 'function') {
-//     bookDialog.showModal();         // show modal (preferred)
-//   } else {
-//     bookDialog.style.display = 'block'; // fallback for old browsers
-//   }
-//   document.getElementById('title').focus();
-// });
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pages = document.getElementById("pages").value;
+  const hasRead = document.getElementById("hasRead").checked;
+
+  addBook(title, author, pages, hasRead);
+
+
+  displayBooks(); //  i called the function coz this updates the table
+  bookDialog.close();
+});
+
